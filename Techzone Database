@@ -267,4 +267,4 @@ Update StudentGrade
  Set InstructorID = 'In0004'
  where CourseID = 'Soc101'
  
- I answered so many questions concerning this project 
+ I answered questions on this project 

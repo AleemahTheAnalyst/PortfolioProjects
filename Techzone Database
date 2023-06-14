@@ -1,1 +1,270 @@
+--PROJECT 1
 
+Create Database 
+Use TechzoneDB
+
+Create table Student
+(StudentID int not null,
+Firstname varchar(50) not null,
+Lastname varchar(50) not null,
+DOB date not null,
+City varchar (50) not null,
+InstructorID varchar(6) not null,
+Phone varchar(10) not null,
+Gender varchar(1) not null
+)
+--Alter
+--Alter table student
+--Add constraint pk_studentid_student primary key(studentid)
+
+Create table Instructor
+(InstructorID varchar(20) not null,
+Firstname varchar(50) not null,
+CourseID varchar(20) not null,
+)
+--Select * from Instructor;
+--Alter
+--Alter table Instructor
+--Add constraint pk_instructorid_instructor primary key(instructorid)
+
+Create table Course
+(CourseID varchar(6) not null,
+Coursename varchar(20) not null,
+Coursecredit int not null,
+Classsize int Null,
+)
+--Alter
+--Alter table Course
+--Add constraint pk_courseid_course primary key(CourseID)
+ 
+Create table Studentleadership
+(StudentexecutiveID int not null,
+Firstname varchar(50) not null,
+Lastname varchar(50) not  null,
+StudentID int not null,
+Studenttitle varchar(50) not null
+)
+--Alter
+Alter table Studentleadership
+Add constraint pk_studentexecutiveid_studentleadership primary key(StudentexecutiveID)
+
+
+Create table Grade
+(Lettergrade varchar(1) not null,
+)
+----Alter 
+--Alter table Grade
+--Add constraint pk_lettergrade_grade primary key(Lettergrade)
+
+Create table StudentGrade
+(StudentID int not null,
+LetterGrade varchar(1) not null,
+CourseID varchar(6) not null,
+InstructorID varchar(6) not null
+)
+----Alter
+--Alter table Studentgrade
+--Add constraint pk_Studentid_Studentgrade primary key(Studentid)
+
+----Foreign key
+--Alter table Instructor
+--Add constraint fk_courseid_instructor Foreign key(CourseID)
+--references course(CourseID)
+
+
+----Foreign key
+--Alter table Student
+--Add constraint fk_instructorid_instructor Foreign key(InstructorID)
+--references instructor(InstructorID)
+
+--Foreign key
+--Alter table Studentleadership
+--Add constraint fk_studentid_student Foreign key(StudentID)
+--references student(StudentID)
+
+----Foreign key
+--Alter table Studentgrade
+--Add constraint fk_lettergrade_studentgrade Foreign key(Lettergrade)
+--references Grade(Lettergrade)
+
+----Foreign key
+--Alter table Studentgrade
+--Add constraint fk_courseid_course Foreign key(CourseID)
+--references Course(CourseID)
+
+--Foreign key
+--Alter table Studentgrade
+--Add constraint fk_instructorid_studentgrade Foreign key(InstructorID)
+--references Instructor(InstructorID)
+
+----Deleting a column
+--Alter table Grade
+--Drop column Score;
+
+--Alter
+--Alter table Grade
+--add Score varchar(20) not null;
+
+--Deleting a column
+Alter table student
+Drop column instructorid
+
+--introduce a new column
+Alter table student
+Add InstructorID varchar(20) not null;
+
+--DML
+Insert into Student (StudentID, Firstname, Lastname, DOB, City, InstructorID, Phone, Gender)
+Values (1, 'Joseph', 'Ahene', '11/25/1980', 'Baltimore', 'In10004', '4321053421', 'M'),
+(2, 'Precious','Owusu','09/11/1982','Columbia','In10003','4321762243', 'F'),
+(3, 'Eni', 'Edo', '01/06/1979', 'Bronx', 'In10002', '5011053421', 'F'),
+(4, 'Felix', 'Emeka', '12/01/1984', 'Newark', 'In10005', '7011762243', 'M'), 
+(5, 'Mercy', 'Johnson', '04/20/1981', 'Wilmington', 'In10005', '3011053421', 'F'), 
+(6, 'Lilian', 'Asong', '08/19/1986', 'Owings Mills', 'In10003', '4321761432', 'F'),
+(7, 'Prince', 'Williams', '06/04/1989', 'Silver Spring','In10004', '4324432211', 'M'), 
+(8, 'Grace', 'Bonnie', '05/13/1985', 'Knoxville','In10001', '8651762243', 'F'), 
+(9, 'Leomie', 'Titus', '05/20/1986', 'Nashville', 'In10001', '8651053421', 'F'), 
+(10, 'Magic', 'Johnson', '09/01/1978', 'Falls Church','In10002', '7241762243', 'M'),
+(11, 'Henry', 'Edwards', '02/12/1983','Massachusetts', 'In10002', '9031053421', 'M'), 
+(12, 'George', 'Phillips', '12/04/1980', 'San Francisco', 'In10001', '4631762241', 'M'), 
+(13, 'Frederick', 'Benson', '01/01/1978', 'Wilmington', 'In10003', '3011222411', 'M'), 
+(14, 'Christy', 'Jones', '10/10/1991', 'Frederick', 'In10005', '4321764444', 'F'), 
+(15, 'Princess', 'Brown', '06/04/1989', 'Tulsa', 'In10001', '4234432211', 'F'), 
+(16, 'Hillary', 'Morgan', '11/13/1990', 'Tampa','In10001', '6411765432', 'F');
+(17,'Busan', 'Bolade', '03/09/2000', 'Francisco', 'In10005', '5463863216', 'M');
+
+
+
+Alter table Student
+Drop constraint[fk_instructorid_instructor]
+
+Alter table student
+Add constraint [fk_instructorid_instructor];
+
+--Alter table Student 
+--Drop Column phone;
+
+Alter table Student
+Add Phone varchar(50);
+
+Alter table Student
+Drop column DOB;
+
+Alter table Student
+Add DOB varchar(50);
+
+--Select * from Student
+ 
+
+Insert into Instructor (InstructorID, Firstname, CourseID)
+ Values ('In10001', 'Joseph', 'Mat102'),
+('In10002', 'Gold', 'Phi400'), 
+('In10003', 'Josyam', 'Soc101'), 
+('In10004', 'Mandadi', 'His304'), 
+('In10005', 'Forson', 'Soc401'),
+('In10008', 'Bolade', 'Bio213');
+Select * from Instructor;
+
+--Alter table Instructor
+Drop table Instructor;
+
+Insert into Course (CourseID, Coursename, Coursecredit, Classsize)
+Values('Soc101', 'Fundamentals of Sociology', '3', '30'),
+('Mat102', 'Elementary Calculus', '3', '25'),
+('His304', 'Intermediate US History', '3', '15'),
+('Soc401', 'Advanced Sociology', '3', '40'), 
+('Phi400', 'Advanced Philosophy', '3', '20');
+
+--Alter table course
+--Alter column Coursename varchar(50) not null
+
+Insert into Grade (Lettergrade, Score)
+Values ('A', '90 - 100'),
+('B', '85 – 89'), 
+('C', '80 - 84'), 
+('D', '70 – 79'), 
+('E', '60 - 69'), 
+('F', '0 - 59'); 
+
+  Insert into StudentGrade (StudentID, LetterGrade, CourseID)
+Values(1, 'A','Soc401'), 
+(2, 'B', 'Phi400'), 
+(3,'B', 'His304'), 
+(4, 'A', 'Mat102'), 
+(5, 'C', 'Soc101'), 
+(6, 'D', 'His304'), 
+(7,'B', 'Phi400'), 
+(8,'A','Mat102'), 
+(9,'C','Soc401'), 
+(10,'A','Mat102'),
+(11,'D','His304'), 
+(12,'F','Soc101'), 
+(13,'A','Mat102'), 
+(14,'A','His304'), 
+(15,'B','Mat102'), 
+(16,'C','His304');
+
+
+--Alter table StudentGrade
+--Alter column InstructorID varchar(6) null
+
+
+--Students that won council election
+Insert into Studentleadership(StudentexecutiveID, Firstname, Lastname, StudentID, Studenttitle)
+Values(100, 'Prince', 'Williams', 7, 'President'), 
+(101, 'Precious', 'Owusu', 2, 'Vice President'), 
+(103, 'Felix', 'Emeka', 4, 'Secretary'), 
+(104, 'Eni', 'Edo', 3, 'Treasurer'), 
+(105, 'Henry', 'Edwards', 11, 'Advisor'), 
+(106, 'Hillary', 'Morgan', 16, 'Organizer'); 
+ --SOLUTION A
+ Insert into Student
+ Values(18, 'Aleemah', 'Alayaki', 'Lagos', 'F', 'In0008', '090-287-023-31', '2000-04-29')
+ --SOLUTION B
+ --Update
+ Update Student
+ Set Lastname = 'Basong'
+ Where StudentID = 6
+ --SOLUTION C
+ Alter table StudentGrade
+ Alter column InstructorID varchar(6) null;
+
+ Delete from StudentGrade;
+Insert into StudentGrade (StudentID, LetterGrade, CourseID)
+Values(1, 'C', 'Mat102'), 
+(2, 'A', 'Soc401'), 
+(3 ,'F', 'Mat102'), 
+(4 ,'D', 'His304'), 
+(5, 'B','Soc101'), 
+(6, 'A', 'Mat102'), 
+(7, 'E', 'His304'), 
+(8, 'D', 'Mat102'), 
+(9, 'F', 'Soc401'), 
+(10, 'B', 'Mat102'), 
+(11, 'D', 'His304'), 
+(12, 'C', 'Soc101'), 
+(13, 'C', 'Mat102'),
+ (14, 'A', 'His304'), 
+(15, 'A', 'Mat102'),
+(16, 'D', 'His304'); 
+ 
+Update StudentGrade
+ Set InstructorID = 'In0001'
+ where CourseID = 'Mat102'
+
+ Alter table StudentGrade
+ Drop constraint fk_instructorid_studentgrade
+ 
+ Update StudentGrade
+ Set InstructorID = 'In0002'
+ where CourseID = 'Soc401'
+
+ Update StudentGrade
+ Set InstructorID = 'In0003'
+ where CourseID = 'His304'
+
+ Update StudentGrade
+ Set InstructorID = 'In0004'
+ where CourseID = 'Soc101'
+ 
+ I answered so many questions concerning this project 
